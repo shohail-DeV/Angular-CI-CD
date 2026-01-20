@@ -9,7 +9,7 @@ tools {
     environment {
         APP_NAME = "angular-app"
         IIS_PATH = "C:\\inetpub\\angular-app"
-        DIST_PATH = "dist\\angular-app"
+        DIST_PATH = "dist\\angular-app\\browser"
         BACKUP_PATH = "C:\\inetpub\\_backups"
     }
 
@@ -63,15 +63,19 @@ tools {
         }
 
         stage('Deploy to IIS') {
-            steps {
-                bat """
-                for %%f in (%IIS_PATH%\\*) do (
-                  if /I not "%%~nxf"=="web.config" del /Q "%%f"
-                )
-                xcopy %DIST_PATH% %IIS_PATH% /E /I /Y
-                """
-            }
-        }
+    steps {
+        bat """
+        REM Clean IIS folder except web.config
+        for %%f in (%IIS_PATH%\\*) do (
+            if /I not "%%~nxf"=="web.config" del /Q "%%f"
+        )
+
+        REM Copy Angular browser build to IIS root
+        xcopy %DIST_PATH% %IIS_PATH% /E /I /Y
+        """
+    }
+}
+
 
         stage('Smoke Test') {
             steps {
