@@ -9,7 +9,7 @@ tools {
     environment {
         APP_NAME = "angular-app"
         IIS_PATH = "C:\\inetpub\\angular-app"
-        DIST_PATH = "dist\\test\\browser"
+        DIST_PATH = "dist\\angular-app"
         BACKUP_PATH = "C:\\inetpub\\_backups"
     }
 
