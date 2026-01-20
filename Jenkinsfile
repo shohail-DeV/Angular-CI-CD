@@ -24,7 +24,7 @@ tools {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://your-git-repo-url.git'
+                    url: 'https://github.com/shohail-DeV/Angular-CI-CD.git'
             }
         }
 
