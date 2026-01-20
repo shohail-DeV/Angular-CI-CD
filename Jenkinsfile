@@ -1,9 +1,10 @@
 pipeline {
     agent any
+  
+tools {
+    nodejs 'Node_js'
+}
 
-    tools {
-        nodejs 'node20'
-    }
 
     environment {
         APP_NAME = "angular-app"
