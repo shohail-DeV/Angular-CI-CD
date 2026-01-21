@@ -62,16 +62,18 @@ tools {
             }
         }
 
+        // 1st. Clean IIS folder except web.config
+        // 2nd. Copy Angular browser build to IIS root
         stage('Deploy to IIS') {
     steps {
         bat """
-        REM Clean IIS folder except web.config
+
         for %%f in (%IIS_PATH%\\*) do (
             if /I not "%%~nxf"=="web.config" del /Q "%%f"
         )
 
-        REM Copy Angular browser build to IIS root
         xcopy %DIST_PATH% %IIS_PATH% /E /I /Y
+
         """
     }
 }
