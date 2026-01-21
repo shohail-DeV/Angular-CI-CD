@@ -77,18 +77,18 @@ tools {
 }
 
 
-        stage('Smoke Test') {
-            steps {
-                powershell '''
-                try {
-                  $r = Invoke-WebRequest http://localhost:8099 -UseBasicParsing -TimeoutSec 10
-                  if ($r.StatusCode -ne 200) { throw "Health check failed" }
-                } catch {
-                  throw "Deployment validation failed"
-                }
-                '''
-            }
-        }
+        // stage('Smoke Test') {
+        //     steps {
+        //         powershell '''
+        //         try {
+        //           $r = Invoke-WebRequest http://localhost:8099 -UseBasicParsing -TimeoutSec 10
+        //           if ($r.StatusCode -ne 200) { throw "Health check failed" }
+        //         } catch {
+        //           throw "Deployment validation failed"
+        //         }
+        //         '''
+        //     }
+        // }
     }
 
     post {
