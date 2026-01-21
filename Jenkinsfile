@@ -34,7 +34,7 @@ tools {
             }
         }
 
-        stage('Build Angular (Browser Only)') {
+        stage('Build Browser app') {
             steps {
                 bat 'npx ng build --configuration production'
             }
